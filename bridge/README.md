@@ -8,6 +8,12 @@ Connects to a QDR.  Creates and AQMP endpoint. Receives and processes collectd A
 make
 ```
 
+## Build Container
+
+```bash
+buildah bud -t sgbridge:latest -f build/Dockerfile .
+```
+
 ## Usage
 
 ```bash
