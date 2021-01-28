@@ -46,7 +46,7 @@ shift
 
 case "$COMMAND" in
 start)
-    if ! cid=$(podman run -d -p 5672:5672 --network=host --name "$CONTAINER_NAME" quay.io/interconnectedcloud/qdrouterd:1.8.0); then
+    if ! cid=$(podman run -d -p 5672:5672 -p 8672:8672 -v ./:/var/config/qdrouterd --network=host --env QDROUTERD_CONF=/var/config/qdrouterd/qdrouterd.conf --name "$CONTAINER_NAME" quay.io/interconnectedcloud/qdrouterd:1.14.0); then
         printf "Could not start %s container!\n" "$CONTAINER_NAME"
         exit 1
     fi
